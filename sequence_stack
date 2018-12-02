@@ -1,0 +1,47 @@
+#pragma once
+#include <iostream>
+using namespace std;
+template <class T>
+class stack {
+public:
+	int top;
+	int size;  //栈的大小
+	T data[10000];
+	stack(int s) { top = -1; size = s; };
+	~stack() {};
+	bool push(T x)  //压栈
+	{
+		if (top == size - 1)
+		{
+			cout << "栈满！无法进行该操作！" << endl;
+			//exit(0);
+			return false;
+		}
+
+		top++;
+		data[top] = x;
+		return true;
+	}
+	 bool pop(T& d)  //弹栈
+	{
+		if (top == -1)
+		{
+			cout << "栈空！无法进行该操作！" << endl;
+			//exit(0);
+			return false;
+		}
+		top--;
+		d=data[top + 1];
+		return true;
+	}
+	T getpop()  //栈顶元素
+	{
+		if (top == -1)
+		{
+			cout << "栈空！无法进行该操作！" << endl;
+			exit(0);
+		}
+		return data[top];
+	}
+};
+
